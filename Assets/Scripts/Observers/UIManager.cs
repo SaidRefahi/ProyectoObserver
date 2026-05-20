@@ -13,6 +13,17 @@ namespace FearPark.UI
         private void Start()
         {
             GestorMiedo.Instance.Registrar(this);
+            // Agregamos el listener para cuando muevas el slider con el mouse
+            _sliderMiedo.onValueChanged.AddListener(OnSliderDrag);
+        }
+
+        public void OnSliderDrag(float valor)
+        {
+            if (GestorMiedo.Instance != null)
+            {
+                // El slider va de 0 a 1, el miedo de 0 a 100
+                GestorMiedo.Instance.SetearMiedo(valor * 100f);
+            }
         }
 
         private void OnDestroy()
@@ -25,7 +36,8 @@ namespace FearPark.UI
 
         public void OnMiedoCambiado(int nivelActual)
         {
-            _sliderMiedo.value = nivelActual / 100f;
+            // SetValueWithoutNotify evita un bucle infinito (Slider cambia Miedo -> Miedo cambia Slider...)
+            _sliderMiedo.SetValueWithoutNotify(nivelActual / 100f);
             _textoNivel.text = nivelActual.ToString();
         }
     }

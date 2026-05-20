@@ -6,8 +6,9 @@ namespace FearPark.Observers
     public class SistemaSonido : MonoBehaviour, ISistemaMiedoObserver
     {
         [SerializeField] private AudioSource _fuenteAudio;
-        [SerializeField] private AudioClip[] _clipsPorRango = new AudioClip[4];
-        [SerializeField] private float[] _volumenesPorRango = new float[4];
+        
+        [Header("Configuración (ScriptableObject)")]
+        [SerializeField] private FearPark.Data.AudioConfigSO _audioConfig;
 
         private int _indiceActual = -1;
 
@@ -28,15 +29,18 @@ namespace FearPark.Observers
         {
             Debug.Log("SistemaSonido notificado: nivel=" + nivelActual);
             
+            if (_audioConfig == null) return;
+            
             int nuevoIndice = ObtenerIndicePorNivel(nivelActual);
             
             if (nuevoIndice != _indiceActual)
             {
                 _indiceActual = nuevoIndice;
-                if (_indiceActual < _clipsPorRango.Length && _fuenteAudio != null)
+                if (_indiceActual < _audioConfig.clipsPorRango.Length && _fuenteAudio != null)
                 {
-                    _fuenteAudio.clip = _clipsPorRango[_indiceActual];
-                    _fuenteAudio.volume = _volumenesPorRango[_indiceActual];
+                    // DIP: Asignamos clip y volumen desde el SO
+                    _fuenteAudio.clip = _audioConfig.clipsPorRango[_indiceActual];
+                    _fuenteAudio.volume = _audioConfig.volumenesPorRango[_indiceActual];
                     _fuenteAudio.Play();
                 }
             }

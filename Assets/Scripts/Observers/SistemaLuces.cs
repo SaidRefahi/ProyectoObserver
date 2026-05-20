@@ -7,9 +7,17 @@ namespace FearPark.Observers
 {
     public class SistemaLuces : MonoBehaviour, ISistemaMiedoObserver
     {
-        [SerializeField] private Light _luzPrincipal;
-        [SerializeField] private Color _colorCalmo = Color.white;
-        [SerializeField] private Color _colorTerror = Color.red;
+        [Header("Luz Ambiental (Mundo)")]
+        [SerializeField] private Light _luzAmbiental;
+        [SerializeField] private Color _colorAmbientalCalmo = Color.white;
+        [SerializeField] private Color _colorAmbientalTerror = Color.red;
+
+        [Header("Luz Jugador (Antorcha)")]
+        [SerializeField] private Light _luzJugador;
+        [SerializeField] private Color _colorJugadorCalmo = new Color(1f, 0.5f, 0f); // Naranja
+        [SerializeField] private Color _colorJugadorTerror = Color.red;
+
+        [Header("Post-Procesado")]
         [SerializeField] private Volume _globalVolume;
 
         private Vignette _vignette;
@@ -34,14 +42,18 @@ namespace FearPark.Observers
 
         public void OnMiedoCambiado(int nivelActual)
         {
-            Debug.Log("SistemaLuces notificado: nivel=" + nivelActual);
-            
             float t = nivelActual / 100f;
             
-            if (_luzPrincipal != null)
+            if (_luzAmbiental != null)
             {
-                _luzPrincipal.color = Color.Lerp(_colorCalmo, _colorTerror, t);
-                _luzPrincipal.intensity = Mathf.Lerp(1f, 0.2f, t);
+                _luzAmbiental.color = Color.Lerp(_colorAmbientalCalmo, _colorAmbientalTerror, t);
+                _luzAmbiental.intensity = Mathf.Lerp(1f, 0.2f, t);
+            }
+
+            if (_luzJugador != null)
+            {
+                _luzJugador.color = Color.Lerp(_colorJugadorCalmo, _colorJugadorTerror, t);
+                // Opcional: puedes hacer que la luz tiemble o baje intensidad aquí también
             }
 
             if (_vignette != null)

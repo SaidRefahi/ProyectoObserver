@@ -13,6 +13,11 @@ namespace FearPark.Core
         
         private List<ISistemaMiedoObserver> _observers = new List<ISistemaMiedoObserver>();
 
+        [SerializeField] private bool _aumentoAutomatico = false; // Desactivado por defecto para que pruebes con el slider
+        
+        [Header("Configuración (ScriptableObject)")]
+        [SerializeField] private FearPark.Data.FearConfigSO _fearConfig;
+
         public float NivelMiedo 
         { 
             get { return _nivelMiedo; } 
@@ -31,7 +36,22 @@ namespace FearPark.Core
 
         private void Start()
         {
-            StartCoroutine(IncrementoAutomatico());
+            if (_aumentoAutomatico)
+            {
+                StartCoroutine(IncrementoAutomatico());
+            }
+        }
+
+        public void SetearMiedo(float nivel)
+        {
+            _nivelMiedo = Mathf.Clamp(nivel, 0f, 100f);
+            int miedoEnteroActual = (int)_nivelMiedo;
+            
+            if (miedoEnteroActual != _miedoEnteroAnterior)
+            {
+                _miedoEnteroAnterior = miedoEnteroActual;
+                Notificar();
+            }
         }
 
         public void Registrar(ISistemaMiedoObserver observer)
@@ -77,7 +97,10 @@ namespace FearPark.Core
             while (true)
             {
                 yield return wait;
-                AumentarMiedo(1f);
+                
+                // DIP: Leemos la velocidad desde el SO. Si no hay SO asignado, usamos 1f como fallback.
+                float incremento = _fearConfig != null ? _fearConfig.velocidadIncrementoBase : 1f;
+                AumentarMiedo(incremento);
             }
         }
     }

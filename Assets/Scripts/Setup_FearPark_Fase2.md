@@ -38,9 +38,9 @@ En 2D, una cámara ortográfica se maneja en el plano XY y escala con `Orthograp
 1. Asegúrate de tener una **Virtual Camera** de Cinemachine apuntando a tu jugador. (En el Inspector de la cámara, asegúrate de que en la sección *Lens* esté configurada en modo **Orthographic**).
 2. Crea un GameObject vacío llamado **`SistemaCamara`** (o si prefieres, arrastra el script directamente al objeto de la Virtual Camera).
 3. Agrégale el script `SistemaCamara.cs`.
-4. Asigna la **Virtual Camera** en el inspector.
-5. Selecciona la Virtual Camera en la jerarquía, baja a la sección **Extensions**, haz click en "Add Extension" y agrega `CinemachineBasicMultiChannelPerlin` (Noise). 
-6. Asigna un *Noise Profile* de la lista desplegable (ej. *6D Wobble*). El script se encargará de encender, apagar y modificar la fuerza de este ruido en tiempo real según el miedo.
+4. Asigna la **CinemachineCamera** en el inspector.
+5. Selecciona tu CinemachineCamera en la jerarquía, ve al final del Inspector, haz clic en **"Add Component"** y busca `CinemachineBasicMultiChannelPerlin`. (En Cinemachine 3 el ruido es un componente normal, ya no está escondido en "Extensions").
+6. En el componente recién agregado, asigna un *Noise Profile* de la lista desplegable (ej. *6D Wobble* o *Basic-Perlin-6D*). El script se encargará de encender, apagar y modificar la fuerza de este ruido en tiempo real según el miedo.
 
 ### 5. Debug Checkpoint Final
 1. Dale **Play**.
