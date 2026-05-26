@@ -75,7 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FearPark.Core.Proyectil
   _velocidad: 15
-  _tiempoVida: 5
+  _tiempoVida: 15
+  _danio: 25
 --- !u!136 &6733948333464036585
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3276775804838540823}
   - component: {fileID: 3076933267914573699}
   - component: {fileID: 4497041595760016903}
-  - component: {fileID: 8527582478434616066}
   - component: {fileID: 4071118024564103944}
+  - component: {fileID: -2294722845951829566}
   m_Layer: 6
   m_Name: Monstruo1
   m_TagString: Untagged
@@ -81,18 +81,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8527582478434616066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2711070099455980977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1bcb6add9238f044a6d14e30370b4f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FearPark.Enemies.MonstruoLento
 --- !u!54 &4071118024564103944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -120,6 +108,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2294722845951829566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711070099455980977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d4f66c4220383418159743729c60d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FearPark.Enemies.MonstruoRapido
+  _datos: {fileID: 11400000, guid: 8efd19fb26f91b24fbb80f5c0f71edfe, type: 2}
 --- !u!1001 &6944087325839953220
 PrefabInstance:
   m_ObjectHideFlags: 0

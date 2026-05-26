@@ -1,5 +1,4 @@
 using UnityEngine;
-using FearPark.Enemies;
 
 namespace FearPark.Core
 {
@@ -8,6 +7,7 @@ namespace FearPark.Core
     {
         [SerializeField] private float _velocidad = 15f;
         [SerializeField] private float _tiempoVida = 3f;
+        [SerializeField] private float _danio = 10f;
 
         private Rigidbody _rigidbody;
 
@@ -23,10 +23,10 @@ namespace FearPark.Core
 
         private void OnTriggerEnter(Collider other)
         {
-            MonstruoBase monstruo = other.GetComponent<MonstruoBase>();
-            if (monstruo != null)
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                monstruo.Morir();
+                damageable.TakeDamage(_danio);
                 Destroy(gameObject);
             }
         }

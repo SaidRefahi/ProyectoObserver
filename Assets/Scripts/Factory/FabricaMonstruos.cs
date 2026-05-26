@@ -10,6 +10,8 @@ namespace FearPark.Factory
         [Header("Configuración de Factory")]
         [SerializeField] private SpawnTableSO tablaSpawn;
         [SerializeField] private FearConfigSO configMiedo;
+
+        public SpawnTableSO TablaSpawn => tablaSpawn;
         
         [Header("Referencias de Escena")]
         [SerializeField] private Transform[] puntosDeSpawn;

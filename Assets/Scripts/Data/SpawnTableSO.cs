@@ -9,6 +9,8 @@ namespace FearPark.Data
     {
         [SerializeField] private List<MonsterDataSO> monstruosDisponibles;
 
+        public IReadOnlyList<MonsterDataSO> MonstruosDisponibles => monstruosDisponibles;
+
         // OCP: Si agregamos nuevos monstruos en el Inspector, el algoritmo los considera sin necesidad de tocar este código.
         public MonsterDataSO ObtenerMonstruoAleatorio(int nivelMiedo)
         {

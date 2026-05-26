@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FearPark.Data.SpawnTableSO
   monstruosDisponibles:
   - {fileID: 11400000, guid: 8efd19fb26f91b24fbb80f5c0f71edfe, type: 2}
+  - {fileID: 11400000, guid: 6bd76c495e3cad64a87f708c53cc5b7a, type: 2}
+  - {fileID: 11400000, guid: dfde35dc640fdc74fa5b1a7c4178bfc2, type: 2}
