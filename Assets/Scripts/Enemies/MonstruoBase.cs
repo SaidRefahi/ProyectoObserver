@@ -11,6 +11,8 @@ namespace FearPark.Enemies
         protected NavMeshAgent _agent;
         protected MonsterDataSO _datos;
         
+        public MonsterDataSO Datos => _datos;
+        
         // Estático para no tener que buscarlo en cada instancia (eficiente)
         protected static Transform _playerTransform;
 
@@ -51,8 +53,10 @@ namespace FearPark.Enemies
                 AudioSource.PlayClipAtPoint(_datos.sonidoMuerte, transform.position);
             }
             
-            // Aquí llamaríamos al GameManager o UIManager para dar puntos
-            // UIManager.Instance.AgregarPuntos(10);
+            if (FearPark.UI.UIManager.Instance != null)
+            {
+                FearPark.UI.UIManager.Instance.AgregarPuntos(10);
+            }
             
             Destroy(gameObject);
         }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb4e35248ec027478d7afecd04b7525, type: 3}
   m_Name: TablaSpawn
   m_EditorClassIdentifier: Assembly-CSharp::FearPark.Data.SpawnTableSO
-  monstruosDisponibles: []
+  monstruosDisponibles:
+  - {fileID: 11400000, guid: 8efd19fb26f91b24fbb80f5c0f71edfe, type: 2}

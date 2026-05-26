@@ -38,7 +38,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  intervaloSpawnBase: 0
+  intervaloSpawnBase: 10
   curvaFrecuenciaSpawn:
     serializedVersion: 2
     m_Curve:

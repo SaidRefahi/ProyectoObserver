@@ -1,0 +1,28 @@
+-------------------
+Folder Name: Prefabs
+-------------------
+Prefab Name: Rigged_Bow_NativeAmerican_Testing
+    Mesh Name: SK_Bow_NativeAmerican_01
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+
+Prefab Name: Rigged_Bow_Testing
+    Mesh Name: SK_Bow_01
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+
+Prefab Name: Rigged_CrossBow_Testing
+    Mesh Name: SM_Wep_Crossbow_01
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+
+Prefab Name: SM_Arrow_01
+    Mesh Name: SM_Arrow_01
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+
+Prefab Name: SM_Prop_Arrow_NativeAmerican_01
+    Mesh Name: SM_Prop_Arrow_NativeAmerican_01
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+
+Prefab Name: SM_Wep_Crossbow_Bolt_01
+    Mesh Name: SM_Wep_Crossbow_Bolt_01
+        Slot: Polygon_BowCrossbow_Mat_01 (Polygon_BoxCrossbow_Texture_01)
+

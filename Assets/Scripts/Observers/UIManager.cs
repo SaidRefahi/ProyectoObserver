@@ -7,14 +7,61 @@ namespace FearPark.UI
 {
     public class UIManager : MonoBehaviour, ISistemaMiedoObserver
     {
+        public static UIManager Instance { get; private set; }
+
+        [Header("Miedo")]
         [SerializeField] private Slider _sliderMiedo;
         [SerializeField] private TextMeshProUGUI _textoNivel;
 
+        [Header("Vida y Estado")]
+        [SerializeField] private Slider _sliderVida;
+        [SerializeField] private SistemaVidaPlayer _vidaPlayer;
+
+        [Header("Estadísticas")]
+        [SerializeField] private TextMeshProUGUI _textoPuntos;
+        [SerializeField] private TextMeshProUGUI _textoTiempo;
+
+        private int _puntos = 0;
+        private float _tiempoJugando = 0f;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
         private void Start()
         {
-            GestorMiedo.Instance.Registrar(this);
-            // Agregamos el listener para cuando muevas el slider con el mouse
-            _sliderMiedo.onValueChanged.AddListener(OnSliderDrag);
+            // OBSERVER: Registro en el sujeto al iniciar
+            if (GestorMiedo.Instance != null)
+            {
+                GestorMiedo.Instance.Registrar(this);
+            }
+
+            if (_sliderMiedo != null)
+            {
+                _sliderMiedo.onValueChanged.AddListener(OnSliderDrag);
+            }
+        }
+
+        private void Update()
+        {
+            if (_sliderVida != null && _vidaPlayer != null)
+            {
+                _sliderVida.value = _vidaPlayer.VidaNormalizada;
+            }
+
+            _tiempoJugando += Time.deltaTime;
+            if (_textoTiempo != null)
+            {
+                _textoTiempo.text = ((int)_tiempoJugando).ToString() + "s";
+            }
         }
 
         public void OnSliderDrag(float valor)
@@ -28,6 +75,7 @@ namespace FearPark.UI
 
         private void OnDestroy()
         {
+            // OBSERVER: Remoción segura al destruirse
             if (GestorMiedo.Instance != null)
             {
                 GestorMiedo.Instance.Remover(this);
@@ -36,9 +84,31 @@ namespace FearPark.UI
 
         public void OnMiedoCambiado(int nivelActual)
         {
-            // SetValueWithoutNotify evita un bucle infinito (Slider cambia Miedo -> Miedo cambia Slider...)
-            _sliderMiedo.SetValueWithoutNotify(nivelActual / 100f);
-            _textoNivel.text = nivelActual.ToString();
+            if (_sliderMiedo != null)
+            {
+                // SetValueWithoutNotify evita un bucle infinito (Slider cambia Miedo -> Miedo cambia Slider...)
+                _sliderMiedo.SetValueWithoutNotify(nivelActual / 100f);
+                
+                Image fillImage = _sliderMiedo.fillRect.GetComponent<Image>();
+                if (fillImage != null)
+                {
+                    fillImage.color = Color.Lerp(Color.green, Color.red, nivelActual / 100f);
+                }
+            }
+
+            if (_textoNivel != null)
+            {
+                _textoNivel.text = nivelActual.ToString();
+            }
+        }
+
+        public void AgregarPuntos(int cantidad)
+        {
+            _puntos += cantidad;
+            if (_textoPuntos != null)
+            {
+                _textoPuntos.text = _puntos.ToString();
+            }
         }
     }
 }
