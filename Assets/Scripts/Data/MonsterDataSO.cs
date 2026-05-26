@@ -5,8 +5,6 @@ namespace FearPark.Data
     [CreateAssetMenu(fileName = "NuevoMonstruo", menuName = "FearPark/Datos/Monstruo")]
     public class MonsterDataSO : ScriptableObject
     {
-        // OCP: Agregar un nuevo monstruo solo implica crear un nuevo asset con estos datos, sin tocar una sola línea de código.
-        
         public string nombreMonstruo;
         
         [Header("Estadísticas Base")]

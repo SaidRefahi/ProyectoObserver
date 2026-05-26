@@ -35,9 +35,8 @@ namespace FearPark.Observers
         {
             if (_perlin == null || _virtualCam == null || _cameraConfig == null) return;
 
-            float t = nivelActual / 100f; // 0.0 a 1.0
+            float t = nivelActual / 100f;
             
-            // DIP: Usamos el SO para obtener los valores y evaluamos las curvas de progresión no-lineal
             _perlin.AmplitudeGain = Mathf.Lerp(_cameraConfig.amplitudShakeMin, _cameraConfig.amplitudShakeMax, _cameraConfig.curvaShake.Evaluate(t));
             _perlin.FrequencyGain = Mathf.Lerp(_cameraConfig.frecuenciaShakeMin, _cameraConfig.frecuenciaShakeMax, _cameraConfig.curvaShake.Evaluate(t));
             

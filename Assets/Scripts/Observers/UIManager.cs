@@ -38,7 +38,6 @@ namespace FearPark.UI
 
         private void Start()
         {
-            // OBSERVER: Registro en el sujeto al iniciar
             if (GestorMiedo.Instance != null)
             {
                 GestorMiedo.Instance.Registrar(this);
@@ -75,7 +74,6 @@ namespace FearPark.UI
 
         private void OnDestroy()
         {
-            // OBSERVER: Remoción segura al destruirse
             if (GestorMiedo.Instance != null)
             {
                 GestorMiedo.Instance.Remover(this);

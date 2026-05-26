@@ -15,7 +15,6 @@ namespace FearPark.Enemies
         
         public MonsterDataSO Datos => _datos;
         
-        // Estático para no tener que buscarlo en cada instancia (eficiente)
         protected static Transform _playerTransform;
 
         protected virtual void Awake()

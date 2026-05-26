@@ -57,7 +57,7 @@ namespace FearPark.Core
             if (_prefabProyectil == null || _puntoDisparo == null) return;
 
             Vector3 dir = target.position - _puntoDisparo.position;
-            dir.y = 0f; // Mantener la bala paralela al suelo
+            dir.y = 0f;
             
             if (dir.sqrMagnitude > 0.01f)
             {

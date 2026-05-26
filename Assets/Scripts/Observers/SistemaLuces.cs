@@ -14,7 +14,7 @@ namespace FearPark.Observers
 
         [Header("Luz Jugador (Antorcha)")]
         [SerializeField] private Light _luzJugador;
-        [SerializeField] private Color _colorJugadorCalmo = new Color(1f, 0.5f, 0f); // Naranja
+        [SerializeField] private Color _colorJugadorCalmo = new Color(1f, 0.5f, 0f);
         [SerializeField] private Color _colorJugadorTerror = Color.red;
 
         [Header("Post-Procesado")]
@@ -53,7 +53,6 @@ namespace FearPark.Observers
             if (_luzJugador != null)
             {
                 _luzJugador.color = Color.Lerp(_colorJugadorCalmo, _colorJugadorTerror, t);
-                // Opcional: puedes hacer que la luz tiemble o baje intensidad aquí también
             }
 
             if (_vignette != null)

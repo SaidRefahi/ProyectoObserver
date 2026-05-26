@@ -38,7 +38,6 @@ namespace FearPark.Observers
                 _indiceActual = nuevoIndice;
                 if (_indiceActual < _audioConfig.clipsPorRango.Length && _fuenteAudio != null)
                 {
-                    // DIP: Asignamos clip y volumen desde el SO
                     _fuenteAudio.clip = _audioConfig.clipsPorRango[_indiceActual];
                     _fuenteAudio.volume = _audioConfig.volumenesPorRango[_indiceActual];
                     _fuenteAudio.Play();

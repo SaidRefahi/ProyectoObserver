@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcbec55e1fe9bf40a8cceefab7c6e0d, type: 3}
   m_Name: Monstruo2
   m_EditorClassIdentifier: Assembly-CSharp::FearPark.Data.MonsterDataSO
-  nombreMonstruo: 
+  nombreMonstruo: Troll
   vida: 50
   velocidad: 3
   danio: 10

@@ -6,7 +6,6 @@ namespace FearPark.Enemies
     {
         public override void Mover()
         {
-            // Actualiza cada frame, es implacable
             _agent.SetDestination(_playerTransform.position);
         }
 

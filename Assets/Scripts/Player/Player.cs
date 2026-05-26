@@ -34,7 +34,6 @@ namespace FearPark.Core
 
         private void Update()
         {
-            // INPUT: Lectura del movimiento
             Vector2 input = _actions.Player.Move.ReadValue<Vector2>();
             
             _moveDirection.Set(input.x, 0f, input.y);
@@ -45,12 +44,11 @@ namespace FearPark.Core
                 GestorMiedo.Instance.AumentarMiedo(fearIncrease);
             }
 
-            // APUNTADO AUTOMÁTICO: Apuntar al enemigo más cercano si existe; de lo contrario, mirar a la dirección de movimiento.
             Transform target = (_disparador != null) ? _disparador.EnemigoMasCercano : null;
             if (target != null)
             {
                 Vector3 dir = target.position - transform.position;
-                dir.y = 0f; // Ignorar diferencia de altura
+                dir.y = 0f;
                 
                 if (dir.sqrMagnitude > 0.01f)
                 {
@@ -61,7 +59,6 @@ namespace FearPark.Core
             }
             else if (_moveDirection.sqrMagnitude > 0.01f)
             {
-                // Si no hay enemigos pero se mueve, rota en la dirección del movimiento
                 transform.rotation = Quaternion.LookRotation(_moveDirection);
             }
         }

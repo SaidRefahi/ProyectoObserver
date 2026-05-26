@@ -7,7 +7,7 @@ namespace FearPark.Enemies
         public override void Inicializar(FearPark.Data.MonsterDataSO data, Transform player)
         {
             base.Inicializar(data, player);
-            _vida *= 2f; // El doble de resistente
+            _vida *= 2f;
         }
 
         public override void Mover()

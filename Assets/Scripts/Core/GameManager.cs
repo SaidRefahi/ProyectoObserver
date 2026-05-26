@@ -27,7 +27,7 @@ namespace FearPark.Core
 
         public void GameOver()
         {
-            if (_estado == GameState.GameOver) return; // Evitar doble llamada
+            if (_estado == GameState.GameOver) return;
 
             _estado = GameState.GameOver;
             Time.timeScale = 0f;
@@ -37,18 +37,15 @@ namespace FearPark.Core
                 _panelGameOver.SetActive(true);
             }
 
-            // Deshabilitar input del player de forma segura
             Player player = FindAnyObjectByType<Player>();
             if (player != null)
             {
-                // Si usa el componente PlayerInput nativo
                 var playerInput = player.GetComponent<UnityEngine.InputSystem.PlayerInput>();
                 if (playerInput != null)
                 {
                     playerInput.DeactivateInput();
                 }
                 
-                // Además desactivamos el script Player para detener movimientos de física
                 player.enabled = false;
             }
         }

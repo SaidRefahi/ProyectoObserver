@@ -5,7 +5,6 @@ namespace FearPark.Data
     [CreateAssetMenu(fileName = "ConfigCamara", menuName = "FearPark/Config/Camara")]
     public class CameraConfigSO : ScriptableObject
     {
-        // DIP: SistemaCamara lee estas configuraciones, sacando los cálculos harcodeados.
         public float amplitudShakeMin;
         public float amplitudShakeMax;
         

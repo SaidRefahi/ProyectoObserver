@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcbec55e1fe9bf40a8cceefab7c6e0d, type: 3}
   m_Name: Monstruo3
   m_EditorClassIdentifier: Assembly-CSharp::FearPark.Data.MonsterDataSO
-  nombreMonstruo: 
+  nombreMonstruo: Caballero de Calabza
   vida: 100
   velocidad: 3
   danio: 10
@@ -21,6 +21,6 @@ MonoBehaviour:
   sonidoMuerte: {fileID: 0}
   sonidoAtaque: {fileID: 0}
   iconoUI: {fileID: 0}
-  prefab: {fileID: 2711070099455980977, guid: 9cb59a463884fc34da994ba53a0c6764, type: 3}
+  prefab: {fileID: 7199189112477856900, guid: 2410beec90c559f4ca2eb6a03d58cf5d, type: 3}
   nivelMiedoMinimo: 70
   pesoDeAparicion: 50

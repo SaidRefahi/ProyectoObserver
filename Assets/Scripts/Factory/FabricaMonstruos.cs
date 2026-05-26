@@ -22,7 +22,6 @@ namespace FearPark.Factory
 
         private void Start()
         {
-            // OBSERVER: Nos suscribimos al GestorMiedo al iniciar
             if (GestorMiedo.Instance != null)
             {
                 GestorMiedo.Instance.Registrar(this);
@@ -31,14 +30,12 @@ namespace FearPark.Factory
 
         private void OnDestroy()
         {
-            // OBSERVER: Nos desuscribimos de forma segura
             if (GestorMiedo.Instance != null)
             {
                 GestorMiedo.Instance.Remover(this);
             }
         }
 
-        // OBSERVER: Recibimos la notificación de cambio por interfaz, SIN usar delegates/events.
         public void OnMiedoCambiado(int nivelActual)
         {
             _nivelActual = nivelActual;
@@ -54,7 +51,7 @@ namespace FearPark.Factory
             float factor = configMiedo.curvaFrecuenciaSpawn.Evaluate(_nivelActual / 100f);
             float intervalo = configMiedo.intervaloSpawnBase * (1f - factor);
             
-            intervalo = Mathf.Max(0.5f, intervalo); // Limite mínimo para no saturar
+            intervalo = Mathf.Max(0.5f, intervalo);
 
             if (_tiempoDesdeUltimoSpawn >= intervalo)
             {
@@ -69,8 +66,6 @@ namespace FearPark.Factory
             }
         }
 
-        // FACTORY: Devolvemos siempre MonstruoBase (la abstracción). Ocultamos cómo se fabrica.
-        // OCP: Si añadimos 10 monstruos más al SpawnTableSO, este código nunca se modifica.
         public MonstruoBase CrearMonstruo(MonsterDataSO data, Vector3 posicion)
         {
             GameObject go = Instantiate(data.prefab, posicion, Quaternion.identity);
